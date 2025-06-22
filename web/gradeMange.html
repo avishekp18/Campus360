@@ -1,0 +1,277 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Emotion Explosion</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background: linear-gradient(to bottom, #f7f7f7, #dfe7ec);
+                margin: 0;
+                overflow: hidden; /* Hide overflowing elements */
+            }
+
+            .emoji-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                pointer-events: none;
+            }
+
+            .emoji {
+                font-size: 2rem;
+                position: absolute;
+                top: -50px;
+                animation: fall linear infinite;
+                z-index: 9999;
+            }
+
+            .sad-emoji {
+                font-size: 2rem;
+                color: #555; /* Subtle gray tone */
+                animation: slowFall 6s linear infinite, fade 6s linear infinite;
+            }
+
+            @keyframes fall {
+                0% {
+                    transform: translateY(-100px) rotate(0deg);
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0.8;
+                }
+                100% {
+                    transform: translateY(100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+
+            @keyframes slowFall {
+                0% {
+                    transform: translateY(-100px) rotate(0deg);
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0.5;
+                }
+                100% {
+                    transform: translateY(100vh) rotate(-180deg);
+                    opacity: 0.2;
+                }
+            }
+
+            @keyframes fade {
+                0%, 100% {
+                    opacity: 0;
+                }
+                50% {
+                    opacity: 1;
+                }
+            }
+
+            h1 {
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+                font-size: 3rem;
+                color: #333;
+                animation: bounce 2s infinite;
+            }
+
+            @keyframes bounce {
+                0%, 100% {
+                    transform: translate(-50%, 0);
+                }
+                50% {
+                    transform: translate(-50%, -10px);
+                }
+            }
+
+            /* Modal Styles */
+            .coming-soon {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                /*background: white;*/
+                padding: 2rem;
+                box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+                text-align: center;
+                border-radius: 10px;
+                z-index: 10000;
+                backdrop-filter: blur(10px);
+                background-color:#f7f7f72b;
+            }
+
+            .coming-soon h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .coming-soon p {
+                margin-top: 80px;
+                margin-bottom: 1.5rem;
+                font-size: 1.2rem;
+                color: #555;
+            }
+
+            .close-btn {
+                padding: 0.5rem 1rem;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 1rem;
+            }
+
+            .close-btn:hover {
+                background-color: #0056b3;
+            }
+
+            .coming-soon h1 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            .coming-soon p {
+                font-size: 18px;
+                color: #555;
+            }
+
+            .coming-soon .close-btn {
+                margin-top: 15px;
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: #28a745;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .coming-soon .close-btn:hover {
+                background-color: #218838;
+            }
+        </style>
+    </head>
+    <body>
+        
+
+        <div class="emoji-container" id="emojiContainer"></div>
+
+
+        <div class="conatainer coming-soon" id="comingSoonModal">
+            <h1>Feature Coming Soon!</h1>
+            <p>We're working hard to bring this feature to life. Stay tuned!</p>
+            <button class="close-btn" id="closeComingSoon">Close</button>
+        </div>
+        <audio id="backgroundMusic" autoplay loop>
+            <source src="asets/in_the_end.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+
+        <script>
+            window.addEventListener('load', function () {
+                const emojiContainer = document.getElementById('emojiContainer');
+
+                // Celebration and sad emojis
+                const celebrationEmojis = ['🎉', '🎊', '✨', '🥳', '🎈', '💥'];
+                const sadEmojis = ['😢', '😭', '😔', '😞'];
+
+                // Function to create emojis
+                function createEmoji(type) {
+                    const emoji = document.createElement('div');
+                    emoji.classList.add('emoji');
+
+                    // Assign type-specific class
+                    if (type === 'sad') {
+                        emoji.classList.add('sad-emoji');
+                        emoji.textContent = sadEmojis[Math.floor(Math.random() * sadEmojis.length)];
+                    } else {
+                        emoji.textContent = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
+                    }
+
+                    // Randomize position
+                    emoji.style.left = `${Math.random() * 100}vw`;
+                    emoji.style.animationDuration = `${Math.random() * 3 + 3}s`; // Random animation duration
+                    emojiContainer.appendChild(emoji);
+
+                    // Remove emoji after animation ends
+                    setTimeout(() => {
+                        emoji.remove();
+                    }, 6000); // Matches animation duration
+                }
+
+                // Generate emojis continuously
+                setInterval(() => {
+                    createEmoji('celebration');
+                    createEmoji('sad');
+                }, 200); // Emojis created every 200ms
+
+                // Show "Feature Coming Soon" modal after 1 second
+                setTimeout(() => {
+                    const comingSoonModal = document.getElementById('comingSoonModal');
+                    comingSoonModal.style.display = 'block';
+
+                    // Close button functionality
+                    document.getElementById('closeComingSoon').addEventListener('click', () => {
+                        comingSoonModal.style.display = 'none';
+                    });
+                }, 1000); // Show modal after 1 second
+            });
+
+//            // music 
+//            window.addEventListener('load', function () {
+//                const music = document.getElementById('backgroundMusic');
+//                music.volume = 0.5; // Set volume to 50%
+//            });
+            window.addEventListener('load', function () {
+        const music = document.getElementById('backgroundMusic');
+        
+        // Function to enable music playback
+        function playMusic() {
+            music.play().catch(error => {
+                console.log('Music autoplay blocked. Waiting for user interaction.');
+            });
+        }
+
+        // Attempt to play music after page load
+        playMusic();
+
+        // Add a fallback: Play on user interaction
+        document.body.addEventListener('click', () => {
+            music.play().catch(error => {
+                console.error('Error playing music:', error);
+            });
+        });
+
+        // Set volume
+        music.volume = 0.3; // Adjust as needed
+    });
+    
+    //autoplay
+//   window.addEventListener('load', function () {
+//        const music = document.getElementById('backgroundMusic');
+//        
+//        // Unmute the music after starting
+//        music.muted = false;
+//
+//        // Set volume
+//        music.volume = 0.5; // Adjust as needed
+//
+//        // Attempt to play immediately
+//        music.play().catch(error => {
+//            console.error('Autoplay failed. Reason:', error);
+//        });
+//    });
+        </script>
+
+    </body>
+</html>

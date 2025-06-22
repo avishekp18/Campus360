@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Student Management System</title>
+    <link rel="icon" href="asets/Design 7.png" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+    <script src="scroll.js" defer></script>
+    <link rel="stylesheet" href="scroll.css">
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding-top: 20px;
+            color: #333;
+        }
+
+        .contact-section {
+            padding: 60px 0;
+            background-color: #ffffff;
+            border-radius: 8px;
+            margin-top: 100px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4e54c8;
+        }
+
+        .contact-info img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+              
+    filter:  hue-rotate(244deg);
+
+
+
+        }
+
+        .contact-form {
+            margin-top: 20px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #4e54c8;
+        }
+
+        .form-group .input-group-text {
+            background-color: #4e54c8;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background-color: #4e54c8;
+            border-color: #4e54c8;
+            width: 100%;
+            height: 50px;
+            box-sizing: border-box;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: #8f94fb;
+            border-color: #8f94fb;
+        }
+
+        .alert {
+            margin-top: 20px;
+            display: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 40px 20px;
+            }
+
+            .contact-section h2 {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav"></div>
+    <!-- Contact Section -->
+    <div class="container contact-section">
+        <div class="row justify-content-center">
+            <div class="col-md-6 contact-form">
+                <h2>Contact Us</h2>
+                <div id="formMessage" class="alert alert-success" role="alert">Your message has been sent!</div>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                            <div class="invalid-feedback">Please enter your name.</div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="email">Your Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                            <div class="invalid-feedback">Please enter a valid email address.</div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="subject">Subject</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter the subject" required>
+                            <div class="invalid-feedback">Please enter a subject.</div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="message">Your Message</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-comment"></i></span>
+                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Type your message here" required></textarea>
+                            <div class="invalid-feedback">Please enter your message.</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-secondary mt-4">Send Message</button>
+                </form>
+            </div>
+            <div class="col-md-5 contact-info d-none d-md-block">
+                <img src="asets/woman.png" alt="Contact Image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="foot"></div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Form submission script -->
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            // Gather form data
+            const formData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                subject: document.getElementById("subject").value,
+                message: document.getElementById("message").value
+            };
+
+            // Send data to the servlet
+            fetch('contact1', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams(formData) // Convert form data to URL-encoded string
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok: " + response.statusText);
+                    }
+                    return response.json(); // Parse the JSON response
+                })
+                .then(data => {
+                    // Display the response message
+                    const formMessage = document.getElementById('formMessage');
+                    if (data.status === "success") {
+                        formMessage.classList.remove('alert-danger');
+                        formMessage.classList.add('alert-success');
+                        formMessage.textContent = data.message; // Use data.message here
+                        formMessage.style.display = 'block'; // Show success message
+                        document.getElementById("contactForm").reset(); // Reset the form if successful
+                    } else {
+                        formMessage.classList.remove('alert-success');
+                        formMessage.classList.add('alert-danger');
+                        formMessage.textContent = data.message; // Use data.message here
+                        formMessage.style.display = 'block'; // Show error message
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    const formMessage = document.getElementById('formMessage');
+                    formMessage.classList.remove('alert-success');
+                    formMessage.classList.add('alert-danger');
+                    formMessage.textContent = "An error occurred: " + error.message; // Show error message
+                    formMessage.style.display = 'block'; // Show error message
+                });
+        });
+    </script>
+
+        <script src="Side-bar.js"></script>
+
+    <!-- Load navigation and footer -->
+    <script type="module">
+        import nav1 from "./nav1.js";
+        document.querySelector('#nav').innerHTML = nav1;
+    </script>
+    <script type="module">
+        import foot from "./footer.js";
+        document.querySelector('#foot').innerHTML = foot;
+    </script>
+</body>
+
+</html>

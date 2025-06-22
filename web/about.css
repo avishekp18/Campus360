@@ -1,0 +1,184 @@
+/* General Styles */
+.team-container {
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+    /*background-color: #f4f7f6;*/
+}
+
+.team-container h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #007bff;
+    letter-spacing: 1.5px;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.team-container h2::before, .team-container h2::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 4px;
+    background: linear-gradient(to right, #007bff, #f39c12);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+.team-container h2::before {
+    left: -70px;
+}
+
+.team-container h2::after {
+    right: -70px;
+}
+
+.team-subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+/* Team Card Layout */
+.team-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Team Card */
+.team-card, .team-member {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s ease;
+    flex: 1;
+    min-width: 300px;
+    margin: 20px;
+}
+
+.team-card:hover, .team-member:hover {
+    /*transform: translateY(-10px);*/
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.team-card img, .team-member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 5px solid #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.team-card:hover img, .team-member:hover img {
+    transform: scale(1.1);
+}
+
+.team-card h3, .team-member h4 {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.team-card p, .team-member p {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.team-card a, .team-member a {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.team-card a:hover, .team-member a:hover {
+    color: #f39c12;
+}
+
+/* Decorative Background (Floating Animation) */
+.decorative-bg {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(0, 123, 255, 0.1);
+    border-radius: 50%;
+    animation: float-bg 6s infinite alternate;
+}
+
+
+
+/* Position the decorative background elements inside the team section */
+.team-card .decorative-bg-1,
+.team-card .decorative-bg-2 {
+    position: absolute;
+    animation: float-bg 6s infinite alternate;
+}
+
+/* Adjust floating background in the team section */
+.team-card .decorative-bg-1 {
+    top: -50px;
+    left: -70px;
+}
+
+.team-card .decorative-bg-2 {
+    bottom: -60px;
+    right: -90px;
+}
+
+@keyframes float-bg {
+    from { transform: translateY(0); }
+    to { transform: translateY(20px); }
+}
+
+/* Social Icons */
+.social-icons a {
+    font-size: 1.5rem;
+    color: #333;
+    margin-right: 15px;
+    transition: color 0.3s, transform 0.2s ease-in-out;
+}
+
+.social-icons a:hover {
+    color: #007bff;
+    transform: scale(0.9);
+}
+
+/* Team Member Styling */
+.team-member {
+    backdrop-filter: blur(10px);
+    background-color: #ffffff1a;
+}
+
+.team-member:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.team-member img {
+    width: 220px;
+    height: 210px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover img {
+    transform: scale(0.95);
+}

@@ -1,0 +1,435 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif; /* Use a clean sans-serif font */
+    line-height: 1.6; /* Improve readability */
+    color: #333; /* Dark text for contrast */
+    /*overflow-x: hidden;*/
+    
+}
+
+.services-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px 0;
+}
+
+.services {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #007bff;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(to right, #007bff, #f39c12);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.services::before,
+.services::after {
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 80px;
+    background: linear-gradient(to right, #007bff, #f39c12);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+.services::before {
+    left: -120px; /* Adjust the position for spacing */
+}
+
+.services::after {
+    right: -120px; /* Adjust the position for spacing */
+}
+
+.services-subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #555;
+    margin-top: 10px;
+    text-align: center;
+    max-width: 600px;
+}
+
+.decorative-circle {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(0, 123, 255, 0.1);
+    border-radius: 50%;
+    top: -30px;
+    left: -50px;
+    z-index: 0;
+    animation: float 6s infinite alternate;
+}
+
+.decorative-circle-2 {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: rgba(243, 156, 18, 0.1);
+    border-radius: 50%;
+    bottom: -40px;
+    right: 0px;
+    z-index: 0;
+    animation: float 6s infinite alternate reverse;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(20px);
+    }
+}
+
+header .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; /* Increased size for more impact */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for better visibility */
+}
+
+header .hero p {
+    font-size: 1.25rem; /* Increased size for better readability */
+    margin-bottom: 30px;
+}
+
+/* Button Styling */
+header .btn {
+    background-color: #ff6584; /* Button color */
+    color: white;
+    border: none;
+    padding: 12px 36px; /* Increased padding */
+    border-radius: 30px;
+    box-shadow: 0 6px 15px rgba(255, 101, 132, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+header .btn:hover {
+    box-shadow: 0 8px 20px rgba(255, 101, 132, 0.3);
+}
+
+/* Anchor tag styles */
+a {
+    color: #007bff; /* Bootstrap primary color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s, transform 0.2s; /* Smooth transitions */
+    font-weight: 500; /* Slightly bolder text */
+}
+
+f1:hover {
+    color: #0056b3; /* Darker shade for hover effect */
+    transform: scale(1.05); /* Slightly scale on hover */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;  
+    transform: scale(1.5);  
+}
+.carousel-item img:hover{
+    transform: scale(1.2);
+}
+
+
+/* Enhanced Carousel Caption Styles */
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 720px;
+    height: 220px;
+    color: white;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(50, 50, 50, 0.5)); /* Gradient for depth */
+    padding: 30px; /* Slightly increased padding for spacing */
+    border-radius: 20px; /* Softer rounded corners */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4); /* Stronger shadow for a floating effect */
+    opacity: 0;
+    animation: fadeInText 2s ease-out forwards, slideUpText 1.5s ease-out forwards;
+}
+
+ /*Caption Text Fade In and Slide Effect*/ 
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUpText {
+    0% {
+        transform: translate(-50%, 30%);  Start below 
+    }
+    100% {
+        transform: translate(-50%, -50%);  Final position centered 
+    }
+}
+
+
+
+/* Styling for Heading */
+.carousel-caption h1 {
+    font-size: 2.5rem; /* Larger font size for impact */
+    font-weight: bold;
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7); /* Stronger text shadow for contrast */
+    letter-spacing: 1.5px; /* Add some space between letters for better readability */
+}
+
+/* Styling for Paragraph */
+.carousel-caption p {
+    font-size: 1.1rem; /* Slightly larger font size */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Medium shadow for better visibility */
+}
+
+/* Button Styles (if you want to add buttons) */
+.carousel-caption .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ff6600; /* A vibrant color to grab attention */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Button Hover Effect */
+.carousel-caption .btn:hover {
+    background-color: #e55d00;
+    transform: scale(1.1); /* Slightly scale the button when hovered */
+}
+
+/* Responsive Styles for Smaller Screens */
+@media (max-width: 768px) {
+    .carousel-caption {
+        width: 90%; /* Make the caption take up more width on smaller screens */
+        height: auto; /* Let the height adjust based on content */
+        padding: 15px;
+    }
+
+    .carousel-caption h1 {
+        font-size: 1.5rem; /* Smaller font size on mobile */
+    }
+
+    .carousel-caption p {
+        font-size: 0.9rem; /* Adjust paragraph font size */
+    }
+}
+
+.carousel-caption .btn {
+    /*background-color: #ff6584;*/
+    /*color: white;*/
+    width: 168px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease in out;
+}
+.carousel-caption .btn:hover {
+    /*background-color: #e04b6b;*/
+    /*box-shadow: 0 8px 20px rgba(255, 101, 132, 0.3);*/
+    box-shadow: 0 8px 20px rgba(98, 93, 94 , 0.3);
+}
+
+/*Adjust carousel image height based on screen size */
+
+@media (min-width: 992px) {
+    .carousel-item img {
+        height: 700px; /* Larger screens */
+    }
+
+    .carousel-caption h1 {
+        font-size: 3rem;
+    }
+
+    .carousel-caption p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .carousel-item img {
+        height: 500px; /* Medium screens */
+    }
+
+    .carousel-caption h1 {
+        font-size: 2.5rem;
+    }
+
+    .carousel-caption p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .carousel-item img {
+        height: 300px; /* Smaller screens */
+    }
+
+    .carousel-caption {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .carousel-caption h1 {
+        font-size: 1.8rem;
+    }
+
+    .carousel-caption p {
+        font-size: 0.9rem;
+    }
+}
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.feature-card {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    text-align: center;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    background-color: #ffffff26;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
+    flex: 1;
+    min-width: 300px;
+}
+
+.feature-card h3 {
+    font-family: 'Playfair Display', serif; /* Elegant font for headings */
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #6c63ff;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+}
+
+.feature-card i {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    font-size: 40px;
+    display: inline-block;
+
+    transition: transform 0.3s, color 0.3s;
+}
+
+.feature-card:hover i {
+    transform: scale(1.1);
+    /*color: #0056b3;*/
+}
+.feature-card p {
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* Button styles */
+.f1 {
+    background-color: #007bff;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    color: white;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.f1:hover {
+    background-color: #0056b3; /* Darker shade for hover */
+    transform: scale(1.05); /* Slightly scale on hover */
+}
+
+/* footer style */
+
+.footer {
+    background-color: #343a40; /* Dark background color */
+    color: #ffffff; /* White text color */
+    padding: 40px 0; /* Top and bottom padding */
+}
+
+.footer h5 {
+    font-size: 1.25rem; 
+    margin-bottom: 20px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+}
+
+.footer p {
+    font-size: 0.9rem; 
+}
+
+.footer .footer-link {
+    color: #ffffff; 
+    text-decoration: none; 
+    transition: color 0.3s;
+}
+
+.footer .footer-link:hover {
+    color: #007bff; /* Change link color on hover */
+}
+
+.social-media-icons {
+    margin-top: 10px; /* Space above social icons */
+}
+
+.social-icon {
+    color: #ffffff; /* White icon color */
+    font-size: 1.5rem; /* Icon size */
+    margin-right: 15px; /* Space between icons */
+    transition: color 0.3s; /* Transition for hover effect */
+}
+
+.social-icon:hover {
+    color: #007bff; /* Change icon color on hover */
+}
+
+hr.bg-light {
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Light separator */
+}
+
+.text-center {
+    margin-top: 20px; /* Space above text */
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        /*transform: translateY(10px);*/
+    }
+
+    to {
+        opacity: 1;
+        /*transform: translateY(0);*/
+    }
+}
+#services2 {
+    scroll-margin-top: 70px; /* Adjust the offset for any fixed headers */
+}
+
+

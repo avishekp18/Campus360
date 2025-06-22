@@ -1,0 +1,18 @@
+# Java build files
+/build/
+*.class
+*.war
+
+# NetBeans/IDEA settings
+nbproject/private/
+*.iml
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temporary files
+*.log

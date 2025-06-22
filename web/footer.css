@@ -1,0 +1,67 @@
+.footer {
+    /*background: linear-gradient(135deg, #3b3f45 0%, #43474d 100%);  Gradient background */
+    background: linear-gradient(135deg, #3b3f45 0%, #000a18 100%);
+    /*135deg, #3b3f45 0%, #010103 100%*/
+    color: #ffffff; /* White text color */
+    padding: 40px 0; /* Top and bottom padding */
+    position: relative; /* Allow for pseudo-elements */
+    overflow: hidden; /* Hide overflow for decorative elements */
+}
+
+.footer h5 {
+    font-size: 1.5rem; /* Increased font size for section headings */
+    margin-bottom: 20px; /* Space below headings */
+    text-transform: uppercase; /* Uppercase for headings */
+    letter-spacing: 1px; /* Spacing between letters */
+    position: relative; /* For pseudo-element effect */
+}
+
+.footer h5::after {
+    content: ''; /* Decorative line below headings */
+    display: block;
+    width: 50px; /* Width of the line */
+    height: 4px; /* Height of the line */
+    background: #007bff; /* Color of the line */
+    margin: 10px auto; /* Center the line */
+    border-radius: 5px; /* Rounded edges */
+}
+
+.footer p {
+    font-size: 0.9rem; /* Font size for paragraphs */
+    line-height: 1.6; /* Better line spacing */
+}
+
+.footer .footer-link {
+    color: #ffffff; /* Link color */
+    text-decoration: none; /* Remove underline from links */
+    transition: color 0.3s, transform 0.3s; /* Transition for hover effect */
+}
+
+.footer .footer-link:hover {
+    color: #007bff; /* Change link color on hover */
+    transform: translateY(-2px); /* Slight upward movement on hover */
+}
+
+.social-media-icons {
+    margin-top: 10px; /* Space above social icons */
+}
+
+.social-icon {
+    color: #ffffff; /* White icon color */
+    font-size: 1.5rem; /* Icon size */
+    margin-right: 15px; /* Space between icons */
+    transition: color 0.3s, transform 0.3s; /* Transition for hover effect */
+}
+
+.social-icon:hover {
+    color: #007bff; /* Change icon color on hover */
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+hr.bg-light {
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Light separator */
+}
+
+.text-center {
+    margin-top: 20px; /* Space above text */
+}

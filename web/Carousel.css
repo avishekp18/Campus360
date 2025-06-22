@@ -1,0 +1,36 @@
+body {
+            background-color: #f0f2f5; /* Light gray background for contrast */
+        }
+
+        .carousel-item {
+            height: 300px; /* Set a fixed height for the carousel item */
+            position: relative; /* For absolute positioning of overlay */
+        }
+
+        .carousel-item img {
+            height: 100%; /* Ensure images fill the item height */
+            width: 100%; /* Make images responsive */
+            object-fit: cover; /* Maintain aspect ratio */
+           
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow effect */
+        }
+
+
+        .row {
+            height: 100%; /* Make the row full height */
+        }
+
+        .col {
+            padding: 10px; /* Remove padding to avoid gaps */
+        }
+
+        .col img {
+            height: 100%; /* Ensure images fill the column */
+        }
+        
+        @media (max-width : 778px){
+            .col img {
+            height: 100%;  /*Ensure images fill the column */
+            /*height: 300px;*/ 
+        }
+        }
